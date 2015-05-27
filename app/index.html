@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Bmb test app</title>
+    <link rel="stylesheet" href="bmb_packages/bmb.research/search.results/endlessScroll/styles/searchResults.css">
+    <link rel="stylesheet" href="bmb_packages/bmb.research/history.list/style/historyList.css">
+    <link rel="stylesheet" href="bmb_packages/bmb.research/history.list/style/historyManager.css">
+    <%- bmb.scripts("bmb.test") %>
+    <style>
+        .topMenu li {
+            display: inline-block;
+            margin-right: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<ul class="topMenu">
+    <li><a href="#/home">Home</a></li>
+    <li><a href="#/history">History</a></li>
+    <li><a href="#/paginatedHistory">History Paging</a></li>
+    <li><a href="#/historyManager">History Manager</a></li>
+    <li><a href="#/favorites">Favorites</a></li>
+</ul>
+
+<hr/>
+<div ui-view style="float: left; width: 40%;"></div>
+</body>
+</html>

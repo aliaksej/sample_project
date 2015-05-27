@@ -1,0 +1,8 @@
+{
+  "host": "http://velvet-na-dev.cloudapp.net/",
+  "apikey": "unit-test",
+  "cpid": "WKUS-TAA-IC",
+  "isCorsEnabled": "true",
+  "logRequests": "false",
+  "xdomainFileName": "xdomain-0.6.7.js"
+}

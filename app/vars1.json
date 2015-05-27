@@ -1,0 +1,22 @@
+{
+  "host": "http://velvet.intelliconnect.stg.cch.com/",
+  "apikey": "unit-test",
+  "cpid": "WKUS-TAA-IC",
+  "isCorsEnabled": "true",
+  "logRequests": "false",
+  "xdomainFileName": "xdomain-0.6.7.js"
+}
+
+"velvet-url": "http://velvet-azure.intelliconnect.cch.com/",
+"velvet-api-key": "3CE89ED16A884BB48E0C587101589175",
+
+
+"velvet-host": "http://velvet.intelliconnect.cch.com",
+"velvet-apikey": "FCB6EDF736DF4A2288E7328B2D50FEFA",
+"velvet-cpid": "WKUS-BC-CC"
+
+
+"velvet-host": "http://armsandbox61.cloudapp.net",
+"velvet-apikey": "C94449C82C694DE1AD6AE64B37D8D83D",
+"velvet-cpid": "WKUS-TAL-ARM",
+"cfid": "wkusarm-ccf",

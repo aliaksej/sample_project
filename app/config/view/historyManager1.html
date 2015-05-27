@@ -1,0 +1,67 @@
+<rs-history-manager history-list-view-model="historyManagerEndlessListViewModel">
+
+    <div class="historyManager">
+
+        <h1>History manager</h1>
+
+        <div class="controls">
+
+            <ul>
+                <li><a ng-click="model.applyDateInterval('day', 0)" ng-class="{selected: model.isSelectedDateInterval('day', 0)}">Today</a></li>
+                <li><a ng-click="model.applyDateInterval('day', 1)" ng-class="{selected: model.isSelectedDateInterval('day', 1)}">Yesterday</a></li>
+                <li><a ng-click="model.applyDateInterval('after', 7)" ng-class="{selected: model.isSelectedDateInterval('after', 7)}">Last 7 days</a></li>
+            </ul>
+
+        </div>
+
+        <div class="buttons">
+            <button ng-click="model.deleteSelectedItems();" ng-disabled="model.selection.length == 0">Delete selected</button>
+        </div>
+
+
+        <div class="historyList">
+            <rs-history-list history-list-view-model="model">
+
+                <div>
+                    Search by:
+                    <input ng-model="query" />
+                    <button ng-click="model.search(query)">Search</button>
+                </div>
+
+                <div>
+                    Order by:
+                    <a ng-click="model.toggleListOrder('Updated')"
+                       ng-class="{desc: model.isSelectedListOrder('Updated', 'desc'), asc: model.isSelectedListOrder('Updated', 'asc')}">Date</a>
+                    <a ng-click="model.toggleListOrder('Title')"
+                       ng-class="{desc: model.isSelectedListOrder('Title', 'desc'), asc: model.isSelectedListOrder('Title', 'asc')}">Title</a>
+                </div>
+
+                <div class="historyListContainer">
+                    <div class="rs-search-results-wrapper" ng-if="model.collection.length || model.query" bmb-endless-scroll scroll-settings="model.iScrollSettings || endlessScrollSettings">
+                        <div class="rs-search-results-scroller">
+                            <ul>
+                                <li ng-repeat="item in model.collection" class="item" bmb-endless-scroll-item>
+                                    <input type="checkbox" ng-click="model.toggleListItemSelection(item)" />
+                                    <i>{{item.searchId ? 'Search' : 'Document'}}:</i>
+                                    <strong ng-bind-html="item.title" class="label"></strong><br/>
+                                    <span class="sub">{{item.updated | date: 'short'}}</span><br/>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="info" ng-show="!model.loading && model.collection.length == 0 && !model.query">
+                        History is empty.
+                    </div>
+
+                    <div class="loading" ng-show="model.loading">
+                        <a href="javascript:void(0)">Loading ...</a>
+                    </div>
+
+                </div>
+            </rs-history-list>
+        </div>
+
+    </div>
+
+</rs-history-manager>

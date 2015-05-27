@@ -1,0 +1,31 @@
+{
+  "name": "bmb.test",
+  "type": "product",
+  "version": "0",
+  "dependencies": {
+    "npm:express": "*",
+    "npm:xhr2": "*",
+    "npm:ejs": "*",
+    "npm:extend": "*",
+    "npm:glob": "*",
+    "bower:angular": "!1.2.26",
+    "bower:bootstrap-sass-official": "3.2.0",
+    "bower:angular-bootstrap": "*",
+    "velvet": "01.09.*",
+    "bmb": "*",
+    "bmb.core": "*",
+    "bmb.identity": "*",
+    "bmb.research": "*"
+  },
+  "devDependencies": {
+    "bower:jquery": "~1.11.1",
+    "npm:jasmine-reporters": "*",
+    "npm:protractor": "*",
+    "bmb.dev": "0.3.*",
+    "npm:gulp": "*",
+    "npm:gulp-zip":"*",
+    "npm:gulp-rimraf":"*",
+    "npm:gulp-rename":"*",
+    "npm:gulp-sass": "1.1.0*"
+  }
+}

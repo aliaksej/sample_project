@@ -1,0 +1,34 @@
+{{message}}
+<a href="#/search">Navigate to Search</a>
+
+<a href="#/forgotPassword">Forgot password</a>
+
+<div style="border: 1px solid grey;padding: 10px; margin: 10px 0; background-color: #99f295;" bmb-use="$auth" ng-show="$auth.loggedOut">
+You've been logged out.
+</div>
+
+<table ng-show="!authenticated">
+    <tr>
+        <th colspan="2">
+            Log in
+        </th>
+    </tr>
+    <tr>
+        <td>Username:</td>
+        <td><input type="text" ng-model="username"/></td>
+    </tr>
+    <tr>
+        <td>Password:</td>
+        <td><input type="password" ng-model="password"/></td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <button ng-click="login()">Login</button>
+        </td>
+    </tr>
+</table>
+
+<div ng-show="authenticated">
+    You've been logged in, {{username}}!
+    <a href="#" bmb-use="$auth" ng-click="$auth.logout()">Logout</a>
+</div>
