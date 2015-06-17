@@ -13,7 +13,10 @@ bmb.test.config.homeCtrl = function($scope, $auth, $state, $location){
     $scope.authenticated = false;
 
     $scope.login = function () {
-        $auth.authenticate($scope.username, $scope.password, true).then(function (result) {
+        $auth.authenticate({
+            userId: $scope.username,
+            password: $scope.password
+        }).then(function (result) {
             $scope.authenticated = true;
         });
     };

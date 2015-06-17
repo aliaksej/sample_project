@@ -8,4 +8,6 @@ bmb.test.config.$module.controller("PaginatedHistoryListViewModel", function ($i
 
     $injector.invoke(bmb.core.list.PaginatedListViewModel, this);
 
+    this.maxLength = 30;
+
 });

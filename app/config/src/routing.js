@@ -44,13 +44,13 @@ bmb.test.config.$module
                 controller: function (vlvRsiFavoriteItems, $scope) {
                     $scope.favorites = [];
                     var promise = vlvRsiFavoriteItems.getMany({
-                        $inlinecount: 'allpages',
-                        $top: 0,
-                        $skip: 0
+                        $orderby: 'Created desc',
+                        $inlinecount: 'allpages'
                     });
                     promise.then(
                         function success (result) {
                             $scope.favorites = result;
+                            window.list = result;
                         },
                         function error () {
 

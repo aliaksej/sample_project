@@ -20,3 +20,13 @@
 "velvet-apikey": "C94449C82C694DE1AD6AE64B37D8D83D",
 "velvet-cpid": "WKUS-TAL-ARM",
 "cfid": "wkusarm-ccf",
+
+// ARM
+{
+"host": "http://arm-dev.cloudapp.net",
+"apikey": "C94449C82C694DE1AD6AE64B37D8D83D",
+"cpid": "WKUS-TAL-ARM",
+"isCorsEnabled": "true",
+"logRequests": "false",
+"xdomainFileName": "xdomain-0.6.7.js"
+}

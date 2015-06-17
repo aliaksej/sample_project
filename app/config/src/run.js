@@ -1,31 +1,34 @@
 bmb.test.config.$module.model("$history", "rsHistoryModel");
 
-bmb.test.config.$module.model("historyEndlessListViewModel", "rsHistoryEndlessListViewModel", function ($history) {
+bmb.test.config.$module.model("historyEndlessListViewModel", "rsHistoryListViewModel", function ($history) {
     return {
-        "historyModel": $history
+        "historyModel": $history,
+        mode: 'endless'
+    };
+});
+
+bmb.test.config.$module.model("paginatedHistoryListModel", "rsHistoryListViewModel", function ($history, dateIntervals) {
+    return {
+        historyModel: $history,
+        dateIntervals: dateIntervals,
+        mode: 'paging'
     };
 });
 
 bmb.test.config.$module.model("dateIntervals", "rsDateIntervals");
 
-bmb.test.config.$module.model('historyViewEndlessListViewModel', 'rsHistoryViewEndlessListViewModel', function ($history, dateIntervals) {
+bmb.test.config.$module.model('historyViewEndlessListViewModel', 'rsHistoryViewListModel', function ($history, dateIntervals) {
     return {
         historyModel: $history,
-        dateIntervals: dateIntervals
-    };
-});
-
-bmb.test.config.$module.model("paginatedHistoryListModel", "PaginatedHistoryListViewModel", function ($history, dateIntervals) {
-    return {
-        historyModel: $history,
-        dateIntervals: dateIntervals
+        dateIntervals: dateIntervals,
+        mode: 'endless'
     };
 });
 
 bmb.test.config.$module
     .run([
-        "bmbStaticDataProvider", "idUserPasswordAuthProvider", "$rootScope", "historyEndlessListViewModel", "historyViewEndlessListViewModel",
-        function (bmbStaticDataProvider, idUserPasswordAuthProvider, $rootScope, historyEndlessListViewModel, historyViewEndlessListViewModel) {
+        "bmbStaticDataProvider", "idUserPasswordAuthProvider", "$rootScope", "historyEndlessListViewModel", "historyViewEndlessListViewModel", "paginatedHistoryListModel",
+        function (bmbStaticDataProvider, idUserPasswordAuthProvider, $rootScope, historyEndlessListViewModel, historyViewEndlessListViewModel, paginatedHistoryListModel) {
 
 
             idUserPasswordAuthProvider.configure({
@@ -67,6 +70,9 @@ bmb.test.config.$module
                 }
             });
 
+            paginatedHistoryListModel.configure({
+                //maxLength: 53
+            });
     }]);
 
 bmb.test.config.$module.model("favoritesModel", "rsFavoritesModel");
