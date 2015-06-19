@@ -25,6 +25,10 @@ bmb.test.config.$module.model('historyViewEndlessListViewModel', 'rsHistoryViewL
     };
 });
 
+bmb.test.config.$module.value('historyItemClickHandler', function (item) {
+    alert(item.type);
+});
+
 bmb.test.config.$module
     .run([
         "bmbStaticDataProvider", "idUserPasswordAuthProvider", "$rootScope", "historyEndlessListViewModel", "historyViewEndlessListViewModel", "paginatedHistoryListModel",
