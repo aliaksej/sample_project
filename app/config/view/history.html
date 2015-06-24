@@ -1,3 +1,10 @@
 <h1>History list</h1>
 
-<rs-history-list view-model="'historyEndlessListViewModel'" item-click="'historyItemClickHandler'"></rs-history-list>
+<rs-top-history-items
+        history-model="$history"
+        item-click="'historyItemClickHandler'"
+        reload-callback="reloadTopItems"
+        all-history-link-click="'allHistoryClickHandler'"
+        all-history-state="historyManager"></rs-top-history-items>
+
+<button ng-click="reloadTopItems()">Reload history</button>

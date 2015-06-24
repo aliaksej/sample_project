@@ -17,22 +17,30 @@ bmb.test.config.$module.model("paginatedHistoryListModel", "rsHistoryListViewMod
 
 bmb.test.config.$module.model("dateIntervals", "rsDateIntervals");
 
-bmb.test.config.$module.model('historyViewEndlessListViewModel', 'rsHistoryViewListModel', function ($history, dateIntervals) {
+bmb.test.config.$module.model('historyViewModel', 'rsHistoryViewListModel', function ($history, dateIntervals) {
     return {
         historyModel: $history,
         dateIntervals: dateIntervals,
-        mode: 'endless'
+        mode: 'paging'
     };
 });
 
-bmb.test.config.$module.value('historyItemClickHandler', function (item) {
-    alert(item.type);
+bmb.test.config.$module.factory('historyItemClickHandler', function ($history) {
+    return function (item) {
+        alert($history.getItemType(item));
+    };
+});
+
+bmb.test.config.$module.factory('allHistoryClickHandler', function ($state) {
+    return function (item) {
+        $state.go('historyManager');
+    };
 });
 
 bmb.test.config.$module
     .run([
-        "bmbStaticDataProvider", "idUserPasswordAuthProvider", "$rootScope", "historyEndlessListViewModel", "historyViewEndlessListViewModel", "paginatedHistoryListModel",
-        function (bmbStaticDataProvider, idUserPasswordAuthProvider, $rootScope, historyEndlessListViewModel, historyViewEndlessListViewModel, paginatedHistoryListModel) {
+        "bmbStaticDataProvider", "idUserPasswordAuthProvider", "$rootScope", "historyEndlessListViewModel", "historyViewModel", "paginatedHistoryListModel",
+        function (bmbStaticDataProvider, idUserPasswordAuthProvider, $rootScope, historyEndlessListViewModel, historyViewModel, paginatedHistoryListModel) {
 
 
             idUserPasswordAuthProvider.configure({
@@ -66,8 +74,7 @@ bmb.test.config.$module
                 }
             });
 
-            historyViewEndlessListViewModel.configure({
-                dateInterval: ['day', 0],
+            historyViewModel.configure({
                 order: {
                     field: 'Updated',
                     direction: 'desc'
