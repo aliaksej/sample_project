@@ -1,23 +1,8 @@
 bmb.test.config.$module.model("$history", "rsHistoryModel");
 
-bmb.test.config.$module.model("historyEndlessListViewModel", "rsHistoryListViewModel", function ($history) {
-    return {
-        "historyModel": $history,
-        mode: 'endless'
-    };
-});
-
-bmb.test.config.$module.model("paginatedHistoryListModel", "rsHistoryListViewModel", function ($history, dateIntervals) {
-    return {
-        historyModel: $history,
-        dateIntervals: dateIntervals,
-        mode: 'paging'
-    };
-});
-
 bmb.test.config.$module.model("dateIntervals", "rsDateIntervals");
 
-bmb.test.config.$module.model('historyViewModel', 'rsHistoryViewListModel', function ($history, dateIntervals) {
+bmb.test.config.$module.model('historyViewModel', 'rsHistoryViewModel', function ($history, dateIntervals) {
     return {
         historyModel: $history,
         dateIntervals: dateIntervals,
@@ -39,8 +24,8 @@ bmb.test.config.$module.factory('allHistoryClickHandler', function ($state) {
 
 bmb.test.config.$module
     .run([
-        "bmbStaticDataProvider", "idUserPasswordAuthProvider", "$rootScope", "historyEndlessListViewModel", "historyViewModel", "paginatedHistoryListModel",
-        function (bmbStaticDataProvider, idUserPasswordAuthProvider, $rootScope, historyEndlessListViewModel, historyViewModel, paginatedHistoryListModel) {
+        "bmbStaticDataProvider", "idUserPasswordAuthProvider", "$rootScope", "historyViewModel",
+        function (bmbStaticDataProvider, idUserPasswordAuthProvider, $rootScope, historyViewModel) {
 
 
             idUserPasswordAuthProvider.configure({
@@ -68,22 +53,12 @@ bmb.test.config.$module
                 $rootScope.$broadcast('authorized');
             });
 
-            historyEndlessListViewModel.configure({
-                params: {
-                    //$top: 5
-                }
-            });
-
             historyViewModel.configure({
                 order: {
                     field: 'Updated',
                     direction: 'desc'
                 }
             });
-
-            paginatedHistoryListModel.configure({
-                //maxLength: 53
-            });
-    }]);
+        }]);
 
 bmb.test.config.$module.model("favoritesModel", "rsFavoritesModel");

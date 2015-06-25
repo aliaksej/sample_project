@@ -30,10 +30,6 @@ bmb.test.config.$module
                     };
                 }*/
             },
-            paginatedHistory: {
-                url: "/paginatedHistory",
-                templateUrl: 'config/view/paginatedHistory.html'
-            },
             historyManager: {
                 url: "/historyManager",
                 templateUrl: 'config/view/historyManager.html'
