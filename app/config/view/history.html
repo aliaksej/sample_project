@@ -1,10 +1,11 @@
 <h1>History list</h1>
 
-<rs-top-history-items
+<rs-recent-history
         history-model="$history"
         item-click="'historyItemClickHandler'"
+        items-count="3"
         reload-callback="reloadTopItems"
         all-history-link-click="'allHistoryClickHandler'"
-        all-history-state="historyManager"></rs-top-history-items>
+        all-history-state="historyManager"></rs-recent-history>
 
 <button ng-click="reloadTopItems()">Reload history</button>
